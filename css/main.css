@@ -1062,3 +1062,8 @@ sidepanel ul li {
 
     text-align: center;
 }
+
+calendar.zoomout > div {
+    transform: scale(0.65) translateY(25%);
+    transform-origin: top left;
+}

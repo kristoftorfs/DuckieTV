@@ -13,16 +13,20 @@ angular.module('DuckieTV.directives.sidepanel', [])
 
             $scope.isShowing = false;
             $scope.isExpanded = false;
+
             $scope.toggle = function() {
                 $scope.isShowing ? $scope.hide() : $scope.show();
+
             };
             $scope.show = function() {
                 $scope.isShowing = true;
                 $scope.contract();
+                $scope.zoomOut();
                 iElement.addClass('active');
             };
             $scope.hide = function() {
                 $scope.isShowing = false;
+                $scope.zoomIn();
                 iElement.removeClass('active');
             };
 
@@ -44,7 +48,19 @@ angular.module('DuckieTV.directives.sidepanel', [])
 
             $scope.showSerie = function() {
                 $scope.expand();
-            };  
+            };
+
+            $scope.zoomOut = function() {
+                setTimeout(function() {
+                    $rootScope.$broadcast('calendar:zoomout');
+                }, 50);
+            };
+
+            $scope.zoomIn = function() {
+                setTimeout(function() {
+                    $rootScope.$broadcast('calendar:zoomin');
+                }, 50);
+            }
 
             $rootScope.$on('episode:select', function(event, serie, episode) {
                 console.log("Select episode!", serie, episode);
