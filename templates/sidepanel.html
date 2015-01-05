@@ -1,6 +1,13 @@
-<div class="event dropdown" dropdown on-toggle="isOpen=true; selectEpisode(serie,episode)" ng-mouseenter="startHoverTimer()" ng-mouseleave="clearHoverTimer()">
-  <!-- dropdown toggler -->
-  <a dropdown-toggle ng-class="{ watched : episode.watched }" >
+<div ng-class="{ active: isShowing }">
+
+ <h2>{{serie.name}} {{episode.getFormattedEpisode()}}</h2>
+ <div style='width:400px; height:225px; background-size:contain; background-repeat:no-repeat; margin: 20px -10px; opacity:1 ' lazy-background="{{episode.filename}}"></div>
+    
+ <strong>{{episode.episodename}}</strong>
+ <p>{{episode.overview}}</p>
+
+
+
     <!-- if we have a torrent, show the progress -->
     <div ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash" tooltip="{{ episode.getFormattedEpisode() }} ({{episode.getAirTime() }}) ">
       <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteProgress.html">
@@ -19,13 +26,10 @@
      
     </div>
   </a>
-  <!-- dropdown -->
-  <ul class="dropdown-menu" ng-if="isOpen">
+
+  <ul>  
   <li>
-    <a href='#/serie/{{serie.TVDB_ID}}/episode/{{episode.TVDB_ID}}'><i class="glyphicon glyphicon-info-sign"></i> {{'EVENT/dropdown-episode-details/lbl'|translate}}</a>
-  </li>
-  <li>
-    <a href='#/series/{{serie.TVDB_ID}}'><i class="glyphicon glyphicon-info-sign"></i> {{'EVENT/dropdown-series-details/lbl'|translate}}</a>
+    <a ng-click="showSerie()"><i class="glyphicon glyphicon-info-sign"></i> {{'EVENT/dropdown-series-details/lbl'|translate}}</a>
   </li>
   <li ng-if="episode.hasAired()">
     <a>
@@ -46,10 +50,8 @@
   <li ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
     <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
   </li>
-  <li style='border-top: 1px solid white; padding-top: 10px; overflow-y: auto; max-height: 270px;'>
-    <h2>{{serie.name}} {{episode.getFormattedEpisode()}}</h2>
-    <div style='float:left; width: 150px; height:85px; background-size:contain; background-repeat:no-repeat; margin: 10px; ' lazy-background="{{episode.filename}}"></div>
-    <strong>{{episode.episodename}}</strong><p>{{episode.overview}}</p>
-  </li>
+  
   </ul>
+
+
 </div>

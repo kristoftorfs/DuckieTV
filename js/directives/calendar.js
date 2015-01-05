@@ -198,7 +198,7 @@ angular.module('DuckieTV.directives.calendar', ['DuckieTV.providers.favorites', 
             episode: '='
         },
         templateUrl: 'templates/event.html',
-        link: function($scope) {
+        controller: function($scope, $rootScope) {
 
             $scope.getSetting = SettingsService.get;
             $scope.hoverTimer = null;
@@ -229,7 +229,9 @@ angular.module('DuckieTV.directives.calendar', ['DuckieTV.providers.favorites', 
                 $scope.episode.Persist();
             });
 
-
+            $scope.selectEpisode = function(serie, episode) {
+                $rootScope.$broadcast('episode:select', serie, episode);
+            }
 
             $scope.autoDownload = function() {
 

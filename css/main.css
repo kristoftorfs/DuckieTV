@@ -1018,3 +1018,47 @@ query-monitor.show {
     opacity: 1;
     -webkit-transform: translateX(0);
 }
+
+.poster-fail {
+    background-image:url(img/icon64-inverted.png);
+    -webkit-transform:rotate(-220deg);
+    display:block; 
+    margin:0 auto;
+    opacity: 1!important;
+}
+
+sidepanel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(25,25,25,1);
+    bottom: 0;
+    padding: 10px;
+    transform: translateX(800px);
+    transition: transform 0.3s ease-in;
+    width: 800px;
+    z-index: 10000;
+}
+
+sidepanel.active {
+    transform: translateX(400px);   
+}
+
+sidepanel.active.expanded {
+    transform: translateX(0);   
+}
+
+sidepanel ul {
+    list-style: none;
+    margin:0;
+    padding:0;;
+    width: 49%;
+}
+sidepanel ul li {
+    padding: 10px 20px;
+    margin:5px;
+    border: 1px solid white;
+    border-radius:10px;
+
+    text-align: center;
+}
