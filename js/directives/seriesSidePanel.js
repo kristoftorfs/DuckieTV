@@ -48,6 +48,9 @@ angular.module('DuckieTV.directives.sidepanel', [])
 
             $scope.showSerie = function() {
                 $scope.expand();
+                setTimeout(function() {
+                    $rootScope.$broadcast('calendar:zoomoutmore');
+                }, 50);
             };
 
             $scope.zoomOut = function() {

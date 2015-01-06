@@ -271,18 +271,27 @@ angular.module('DuckieTV.directives.calendar', ['DuckieTV.providers.favorites', 
             $scope.view = 'week';
             $scope.zoomOut = function() {
                 iElement.addClass('zoomout');
+                iElement.removeClass('more');
             }
             $scope.zoomIn = function() {
                 iElement.removeClass('zoomout');
+                iElement.removeClass('more');
+            }
+            $scope.zoomoutMore = function() {
+                iElement.addClass('more');
             }
         },
         controller: function($rootScope, $scope) {
             $rootScope.$on('calendar:zoomout', function() {
                 $scope.zoomOut();
-            })
+            });
+            $rootScope.$on('calendar:zoomoutmore', function() {
+                $scope.zoomOut();
+                $scope.zoomoutMore();
+            });
             $rootScope.$on('calendar:zoomin', function() {
                 $scope.zoomIn();
-            })
+            });
 
         }
     };
