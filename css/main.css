@@ -1051,10 +1051,9 @@ sidepanel.active.expanded {
 sidepanel ul {
     list-style: none;
     margin:0;
-    padding:0;;
-    width: 49%;
+    padding:0;
 }
-sidepanel ul li {
+sidepanel ul.buttons li {
     padding: 10px 20px;
     margin:5px;
     border: 1px solid white;
