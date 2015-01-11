@@ -13,18 +13,19 @@
             <li ng-click="showSerie()">
                 <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
             </li>
+
             <episode-watched ng-if="episode.hasAired()" template-url="templates/sidepanel/mark-watched.html" episode="episode" ng-click="markWatched(episode)"></episode-watched>
-            <li ng-if="getSetting('torrenting.enabled')">
-                <a>
-                    <torrent-dialog tvdbid='episode.TVDB_ID' q='getSearchString(serie, episode)'> <strong><translate>EVENT/dropdown-utorrent-client/lbl</translate></strong></torrent-dialog>
-                </a>
-            </li>
+
+            <torrent-dialog ng-if="getSetting('torrenting.enabled')" tvdbid='episode.TVDB_ID' q='getSearchString(serie, episode)'> <strong><translate>EVENT/dropdown-utorrent-client/lbl</translate></strong></torrent-dialog>
+
             <li ng-click="autoDownload(episode)">
                 <i class="glyphicon glyphicon-cloud-download"></i><strong>Auto Download</strong>
             </li>
+
             <li ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
                 <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
             </li>
+            
             <li ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash">
                 Download Progress
                 <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteProgress.html"></torrent-remote-control>

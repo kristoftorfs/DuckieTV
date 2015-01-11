@@ -388,6 +388,12 @@ table.light h1 {
 .serie h1 {
     color:black;
 }
+
+.torrent-dialog {
+  display: inline-block;
+  list-style: none;
+}
+
 .dropdown {
     text-align: center;
 }
@@ -1123,8 +1129,9 @@ sidepanel .leftpanel .buttons strong {
 }
 
 sidepanel .leftpanel .buttons li {
+    display: block;
     padding: 15px;
-    margin: 8px;
+    margin: 10px 8px;
     border: 1px solid #fff;
     border-radius: 10px;
     text-align: center;
