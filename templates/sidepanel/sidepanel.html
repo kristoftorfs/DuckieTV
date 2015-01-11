@@ -13,7 +13,7 @@
             <li ng-click="showSerie()" style="display:inline-block; width:50%;">
                 <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
             </li>
-            <li ng-click="showEpisodes()" style="display:inline-block; width:50%;>
+            <li ng-click="showEpisodes()" style="display:inline-block; width:50%;">
                 <i class="glyphicon glyphicon-info-sign"></i><strong>Episodes</strong>
             </li>
 
@@ -25,11 +25,11 @@
                 <i class="glyphicon glyphicon-cloud-download"></i><strong>Auto Download</strong>
             </li>
 
-            <li ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
+            <li class="no-hover" ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
                 <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
             </li>
             
-            <li ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash">
+            <li class="no-hover" ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash">
                 Download Progress
                 <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteProgress.html"></torrent-remote-control>
             </li>

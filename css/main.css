@@ -1143,6 +1143,11 @@ sidepanel .leftpanel .buttons li:hover {
     cursor: pointer;
 }
 
+sidepanel .leftpanel .buttons li.no-hover {
+    background-color: initial;
+    cursor: initial;
+}
+
 sidepanel .leftpanel i.glyphicon {
     float: left;
     font-size: 22px;
