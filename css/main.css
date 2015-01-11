@@ -1033,7 +1033,7 @@ sidepanel {
     right: 0;
     bottom: 0;
     width: 800px;
-    z-index: 10000;
+    z-index: 850;
     background-color: rgba(25,25,25,1);
     transform: translateX(800px);
     transition: transform 0.3s ease-in;

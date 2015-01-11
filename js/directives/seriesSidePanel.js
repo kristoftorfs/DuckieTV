@@ -1,6 +1,6 @@
 angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites', 'DuckieTV.providers.episodeaired'])
 
-.directive('sidepanel', function(FavoritesService, EpisodeAiredService) {
+.directive('sidepanel', function(FavoritesService, EpisodeAiredService, SceneNameResolver) {
 
     return {
         restrict: 'E',
@@ -55,6 +55,12 @@ angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites',
 
             $scope.autoDownload = function() {
                 EpisodeAiredService.autoDownload($scope.serie, $scope.episode);
+            };
+
+            $scope.getSearchString = function(serie, episode) {
+                console.log(serie, episode)
+                var serieName = SceneNameResolver.getSceneName(serie.TVDB_ID) || serie.name;
+                return serieName.replace(/\(([12][09][0-9]{2})\)/, '').replace(' and ', ' ') + ' ' + SceneNameResolver.getSearchStringForEpisode(serie, episode);
             };
 
             $scope.zoomOut = function() {

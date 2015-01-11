@@ -1,4 +1,4 @@
-<div ng-show="isShowing" ng-class="{ active: isShowing }" style=" position: relative; width: 100%; height: 100%;">
+<div ng-if="isShowing" ng-class="{ active: isShowing }" style=" position: relative; width: 100%; height: 100%;">
     <!-- Temp Close Sidepanel Button -->
     <div class="handle" ng-click="hide()">Hide</div>
     
@@ -16,7 +16,7 @@
             <episode-watched ng-if="episode.hasAired()" template-url="templates/sidepanel/mark-watched.html" episode="episode" ng-click="markWatched(episode)"></episode-watched>
             <li ng-if="getSetting('torrenting.enabled')">
                 <a>
-                    <torrent-dialog tvdbid='episode.TVDB_ID' q='getSearchString(event)'> <strong><translate>EVENT/dropdown-utorrent-client/lbl</translate></strong></torrent-dialog>
+                    <torrent-dialog tvdbid='episode.TVDB_ID' q='getSearchString(serie, episode)'> <strong><translate>EVENT/dropdown-utorrent-client/lbl</translate></strong></torrent-dialog>
                 </a>
             </li>
             <li ng-click="autoDownload(episode)">
