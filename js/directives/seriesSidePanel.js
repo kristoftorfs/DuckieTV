@@ -7,8 +7,10 @@ angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites',
         templateUrl: 'templates/sidepanel/sidepanel.html',
         link: function($scope, iElement, $rootScope) {
 
+            $scope.state = '';
             $scope.serie = null;
             $scope.season = null;
+            $scope.seasons = null;
             $scope.episode = null;
 
             $scope.isShowing = false;
@@ -42,16 +44,50 @@ angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites',
         },
         controller: function($scope, $rootScope) {
 
-            $rootScope.$on('serie:select', function() {
-
-            });
-
             $scope.showSerie = function() {
                 $scope.expand();
+                $scope.state = 'serie';
                 setTimeout(function() {
                     $rootScope.$broadcast('calendar:zoomoutmore');
                 }, 50);
             };
+
+            $scope.showEpisodes = function() {
+                $scope.expand();
+                $scope.state = 'episodes';
+
+                setTimeout(function() {
+                    $rootScope.$broadcast('calendar:zoomoutmore');
+                }, 50);
+
+                $scope.serie.getSeasons().then(function(result) {
+                    $scope.seasons = result;
+                    $scope.serie.getLatestSeason().then(function(result) {
+                        $scope.activeSeason = result;
+                        fetchEpisodes(result);
+                    });
+                });
+            };
+
+            var allSeasons = [];
+
+
+            function fetchEpisodes(season) {
+                if (!season) return;
+                $scope.season = season;
+
+                var episodes = season.getEpisodes().then(function(data) {
+                    $scope.episodes = data.map(function(el) {
+                        $scope.$on('magnet:select:' + el.TVDB_ID, function(evt, magnet) {
+                            this.magnetHash = magnet;
+                            this.Persist();
+                        }.bind(el));
+                        return el;
+                    });
+
+                });
+            };
+
 
             $scope.autoDownload = function() {
                 EpisodeAiredService.autoDownload($scope.serie, $scope.episode);

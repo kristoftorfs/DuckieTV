@@ -10,8 +10,11 @@
         <p>{{episode.overview}}</p>
 
         <ul class="buttons">
-            <li ng-click="showSerie()">
+            <li ng-click="showSerie()" style="display:inline-block; width:50%;">
                 <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
+            </li>
+            <li ng-click="showEpisodes()" style="display:inline-block; width:50%;>
+                <i class="glyphicon glyphicon-info-sign"></i><strong>Episodes</strong>
             </li>
 
             <episode-watched ng-if="episode.hasAired()" template-url="templates/sidepanel/mark-watched.html" episode="episode" ng-click="markWatched(episode)"></episode-watched>
@@ -33,7 +36,8 @@
         </ul>
     </div>
 
-    <div class="rightpanel">
-        <serie-details template-url="templates/sidepanel/serieDetails.html"><serie-details>
+    <div class="rightpanel"> 
+        <serie-details ng-if="state == 'serie'" template-url="templates/sidepanel/serieDetails.html"></serie-details>
+        <div ng-if="state == 'episodes'" ng-include="'templates/sidepanel/episodes.html'"></div>
     </div>
 </div>
