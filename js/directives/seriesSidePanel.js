@@ -1,6 +1,6 @@
 angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites', 'DuckieTV.providers.episodeaired'])
 
-.directive('sidepanel', function(FavoritesService, EpisodeAiredService, SceneNameResolver) {
+.directive('sidepanel', function(FavoritesService, EpisodeAiredService, SceneNameResolver, uTorrent) {
 
     return {
         restrict: 'E',
@@ -94,8 +94,13 @@ angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites',
             };
 
             $scope.getSearchString = function(serie, episode) {
+                if(!serie || !episode) return;
                 var serieName = SceneNameResolver.getSceneName(serie.TVDB_ID) || serie.name;
                 return serieName.replace(/\(([12][09][0-9]{2})\)/, '').replace(' and ', ' ') + ' ' + SceneNameResolver.getSearchStringForEpisode(serie, episode);
+            };
+
+            $scope.isTorrentClientConnected = function() {
+                return uTorrent.isConnected();
             };
 
             $scope.zoomOut = function() {
