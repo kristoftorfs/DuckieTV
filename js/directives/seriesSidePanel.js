@@ -4,7 +4,7 @@ angular.module('DuckieTV.directives.sidepanel', [])
 
     return {
         restrict: 'E',
-        templateUrl: 'templates/sidepanel.html',
+        templateUrl: 'templates/sidepanel/sidepanel.html',
         link: function($scope, iElement, $rootScope) {
 
             $scope.serie = null;

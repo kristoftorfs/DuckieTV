@@ -11,19 +11,9 @@
 
         <ul class="buttons">
             <li ng-click="showSerie()">
-                <a>
-                    <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
-                </a>
+                <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
             </li>
-            <li ng-if="episode.hasAired()">
-                <a>
-                    <episode-watched episode="episode">
-                    <strong>
-                        <span ng-if="!episode.watched">{{'EVENT/dropdown-mark-as-watched/lbl'|translate}}</span>
-                        <span ng-if="episode.watched">{{'EVENT/dropdown-marked-watched/lbl'|translate}} {{ episode.watchedAt | date:'medium' }}</span>
-                    </strong>
-                    </episode-watched>
-                </a>
+            <li ng-if="episode.hasAired()" episode-watched episode="episode" ng-click="markWatched(episode)">
             </li>
             <li ng-if="getSetting('torrenting.enabled')">
                 <a>
@@ -31,9 +21,7 @@
                 </a>
             </li>
             <li ng-click="autoDownload(episode)">
-                <a tooltip="perform magic">
-                    <i class="glyphicon glyphicon-cloud-download"></i><strong>Auto Download</strong>
-                </a>
+                <i class="glyphicon glyphicon-cloud-download"></i><strong>Auto Download</strong>
             </li>
             <li ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
                 <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
@@ -46,6 +34,6 @@
     </div>
 
     <div class="rightpanel">
-        <serie-details template-url="templates/serieSidePanel.html"><serie-details>
+        <serie-details template-url="templates/sidepanel/serieDetails.html"><serie-details>
     </div>
 </div>
