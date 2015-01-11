@@ -1,61 +1,59 @@
-<div ng-show="isShowing" ng-class="{ active: isShowing }">
-<div class="handle" style="position: absolute; top: 35px;left: -64px;width: 100px;height: 32px;border: 1px solid black;-webkit-transform: rotate(-90deg);background-color: rgba(255,255,255,0.4);padding: 5px;" ng-click="hide()" >Hide</div>
-	<div class="leftPanel" style="position: absolute; top:0px; left:0px; width:400px; padding:20px">
-		
-		<h2>{{serie.name}} {{episode.getFormattedEpisode()}}</h2>
-		<div style='width:400px; height:225px; background-size:contain; background-repeat:no-repeat; margin: 20px; margin-left:-20px; opacity:1 ' lazy-background="{{episode.filename}}"></div>
+<div ng-show="isShowing" ng-class="{ active: isShowing }" style=" position: relative; width: 100%; height: 100%;">
+    <!-- Temp Close Sidepanel Button -->
+    <div class="handle" ng-click="hide()">Hide</div>
+    
+    <div class="leftpanel">
+        
+        <h2>{{serie.name}} {{episode.getFormattedEpisode()}}</h2>
+        <div class="episode-img" lazy-background="{{episode.filename}}"></div>
+        <strong>{{episode.episodename}}</strong>
+        <p>{{episode.overview}}</p>
 
-		<strong>{{episode.episodename}}</strong>
-		<p>{{episode.overview}}</p>
+        <!-- no torrent, or don't show torrent: just show the name -->
+        <div ng-class="{ watchedtick : episode.watched }">
+            <span tooltip="{{episode.getFormattedEpisode()}} ({{episode.getAirTime() }}) ">{{ serie.name }}</span>
+        </div>
 
+        <!-- episode watched, show icon. -->
+        <div ng-if="episode.watched">
+            <div>
+                <span class="glyphicon glyphicon-ok watchedpos" ng-style="{ top: getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash ? '6px' : '3px' }"></span>
+            </div>
+        </div>
 
-		<!-- no torrent, or don't show torrent: just show the name --> 
-		<div ng-class="{ watchedtick : episode.watched }">
-		  <span tooltip="{{episode.getFormattedEpisode()}} ({{episode.getAirTime() }}) ">{{ serie.name }}</span>
-		</div>
-		<!-- episode watched, show icon. -->
-		<div ng-if="episode.watched">
-		  <div>
-		    <span class="glyphicon glyphicon-ok watchedpos" ng-style="{ top: getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash ? '6px' : '3px' }"></span>
-		  </div>
-		 
-		</div>
-		</a>
+        <ul class="buttons">
+            <li>
+                <a ng-click="showSerie()"><i class="glyphicon glyphicon-info-sign"></i> {{'EVENT/dropdown-series-details/lbl'|translate}}</a>
+            </li>
+            <li ng-if="episode.hasAired()">
+                <a>
+                    <episode-watched episode="episode">
+                    <span ng-if="!episode.watched">{{'EVENT/dropdown-mark-as-watched/lbl'|translate}}</span>
+                    <span ng-if="episode.watched">{{'EVENT/dropdown-marked-watched/lbl'|translate}} {{ episode.watchedAt | date:'medium' }}</span>
+                    </episode-watched>
+                </a>
+            </li>
+            <li ng-if="getSetting('torrenting.enabled')">
+                <a style='display:inline-block'>
+                <torrent-dialog tvdbid='episode.TVDB_ID' q='getSearchString(event)'> <translate>EVENT/dropdown-utorrent-client/lbl</translate></torrent-dialog>
+            </a>
+            </li>
+            <li>
+                <a ng-click="autoDownload(episode)" style='display:inline-block'>
+                    Auto Download <i class="glyphicon glyphicon-cloud-download" tooltip="perform magic"></i>
+                </a>
+            </li>
+            <li ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
+                <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
+            </li>
+            <li ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash">
+                Download Progress
+                <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteProgress.html"></torrent-remote-control>
+            </li>
+        </ul>
+    </div>
 
-		<ul class="buttons">  
-		<li>
-			<a ng-click="showSerie()"><i class="glyphicon glyphicon-info-sign"></i> {{'EVENT/dropdown-series-details/lbl'|translate}}</a>
-		</li>
-		<li ng-if="episode.hasAired()">
-			<a>
-			  <episode-watched episode="episode">
-			    <span ng-if="!episode.watched">{{'EVENT/dropdown-mark-as-watched/lbl'|translate}}</span>
-			    <span ng-if="episode.watched">{{'EVENT/dropdown-marked-watched/lbl'|translate}} {{ episode.watchedAt | date:'medium' }}</span>
-			  </episode-watched>
-			</a>
-		</li>
-		<li ng-if="getSetting('torrenting.enabled')">
-			<a style='display:inline-block'>
-			  <torrent-dialog tvdbid='episode.TVDB_ID' q='getSearchString(event)'> <translate>EVENT/dropdown-utorrent-client/lbl</translate></torrent-dialog>
-			</a>
-		</li>
-		<li>
-		<a ng-click="autoDownload(episode)" style='display:inline-block'>
-		  Auto Download <i class="glyphicon glyphicon-cloud-download" tooltip="perform magic"></i>
-		</a>
-		</li>
-		<li ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
-			<torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
-		</li>
-		<li ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash">
-		Download Progress
-		  <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteProgress.html"></torrent-remote-control>
-		</li>
-		</ul>
-	</div>
-
-	<div style='position:absolute; top: 0px; left: 400px; width:400px; height:100%'>
-			<serie-details template-url="templates/serieSidePanel.html"><serie-details>
-	</div>
-
+    <div class="rightpanel">
+        <serie-details template-url="templates/serieSidePanel.html"><serie-details>
+    </div>
 </div>

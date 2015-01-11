@@ -1031,13 +1031,12 @@ sidepanel {
     position: fixed;
     top: 0;
     right: 0;
-    background-color: rgba(25,25,25,1);
     bottom: 0;
-    padding: 10px;
-    transform: translateX(800px);
-    transition: transform 0.3s ease-in;
     width: 800px;
     z-index: 10000;
+    background-color: rgba(25,25,25,1);
+    transform: translateX(800px);
+    transition: transform 0.3s ease-in;
 }
 
 sidepanel.active {
@@ -1058,10 +1057,43 @@ sidepanel ul.buttons li {
     margin:5px;
     border: 1px solid white;
     border-radius:10px;
-
     text-align: center;
 }
 
+sidepanel .handle {
+    position: absolute;
+    top: 35px;
+    left: -64px;
+    width: 100px;
+    height: 32px;
+    border: 1px solid black;
+    -webkit-transform: rotate(-90deg);
+    background-color: rgba(255,255,255,0.4);
+    padding: 5px;
+}
+
+sidepanel .leftpanel {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 360px;
+    height: calc(100% - 40px);
+    margin: 20px;
+}
+
+sidepanel .rightpanel {
+    position: absolute;
+    top: 0px;
+    left: 400px;
+    width: 360px;
+    height: calc(100% - 40px);
+    margin: 20px;
+}
+
+sidepanel .leftpanel .episode-img {
+    width:360px;
+    height:225px;
+}
 
 @media (min-width: 1800px) {
     calendar.zoomout > div {
