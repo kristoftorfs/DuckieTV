@@ -4,6 +4,9 @@
 	</div>
 	<div ng-if="episode.watched">
 	    <i class="glyphicon glyphicon-eye-open"></i>
-		<span>{{'EVENT/dropdown-marked-watched/lbl'|translate}} {{ episode.watchedAt | date:'medium' }}<span>
+	    <div style="display: inline-block">
+		    <span style="display: block">{{'EVENT/dropdown-marked-watched/lbl'|translate}}</span>
+		    <span style="display: block">{{ episode.watchedAt | date:'medium' }}<span>
+		</div>
 	</div>
 </strong>

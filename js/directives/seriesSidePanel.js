@@ -1,6 +1,6 @@
-angular.module('DuckieTV.directives.sidepanel', [])
+angular.module('DuckieTV.directives.sidepanel', ['DuckieTV.providers.favorites', 'DuckieTV.providers.episodeaired'])
 
-.directive('sidepanel', function(FavoritesService) {
+.directive('sidepanel', function(FavoritesService, EpisodeAiredService) {
 
     return {
         restrict: 'E',
@@ -51,6 +51,10 @@ angular.module('DuckieTV.directives.sidepanel', [])
                 setTimeout(function() {
                     $rootScope.$broadcast('calendar:zoomoutmore');
                 }, 50);
+            };
+
+            $scope.autoDownload = function() {
+                EpisodeAiredService.autoDownload($scope.serie, $scope.episode);
             };
 
             $scope.zoomOut = function() {
