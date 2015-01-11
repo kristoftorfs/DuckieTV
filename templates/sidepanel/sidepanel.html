@@ -13,7 +13,7 @@
             <li ng-click="showSerie()">
                 <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
             </li>
-            <episode-watched ng-if="episode.hasAired()" template-url="templates/sidepanel/mark-watched.html" episode="episode" ng-click="markWatched(episode)" />
+            <episode-watched ng-if="episode.hasAired()" template-url="templates/sidepanel/mark-watched.html" episode="episode" ng-click="markWatched(episode)"></episode-watched>
             <li ng-if="getSetting('torrenting.enabled')">
                 <a>
                     <torrent-dialog tvdbid='episode.TVDB_ID' q='getSearchString(event)'> <strong><translate>EVENT/dropdown-utorrent-client/lbl</translate></strong></torrent-dialog>

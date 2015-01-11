@@ -544,22 +544,22 @@ chrome-top-sites a p {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
-episode-watched {
+.episode-watched {
     display:block;
     text-align:center;
     cursor:pointer;
     font-size: 18px;
     margin: 0;
 }
-episode-watched a.glyphicon-eye-open {
+.episode-watched a.glyphicon-eye-open {
     color: green;
     font-size: 18px;
 }
-.dropdown-menu episode-watched a.glyphicon-eye-open {
+.dropdown-menu .episode-watched a.glyphicon-eye-open {
     color: green;
     font-size: 18px;
 }
-.dropdown-menu episode-watched span {
+.dropdown-menu .episode-watched span {
     font-family: helvetica, sans-serif;
     font-size: 14px;
     line-height: 14px;
@@ -570,18 +570,18 @@ episode-watched a.glyphicon-eye-open {
     left: 29px;
     top: 2px;
 }
-.dropdown-menu episode-watched .glyphicon-eye-open {
+.dropdown-menu .episode-watched .glyphicon-eye-open {
     color: green;
 }
-.markAsWatched episode-watched a.glyphicon {
+.markAsWatched .episode-watched a.glyphicon {
     color: rgba(0, 255, 0, 0.4);
     -webkit-transform: rotate(360deg);
     -webkit-transition: all 0.5s ease-in-out;
 }
-episode-watched a.glyphicon-eye-close {
+.episode-watched a.glyphicon-eye-close {
     color: rgba(255, 255, 255, 0.5);
 }
-episode-watched a.glyphicon-eye-close:hover {
+.episode-watched a.glyphicon-eye-close:hover {
     color: rgba(255, 255, 255, 0.9);
 }
 fieldset {
