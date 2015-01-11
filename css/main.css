@@ -1047,19 +1047,6 @@ sidepanel.active.expanded {
     transform: translateX(0);   
 }
 
-sidepanel ul {
-    list-style: none;
-    margin:0;
-    padding:0;
-}
-sidepanel ul.buttons li {
-    padding: 10px 20px;
-    margin:5px;
-    border: 1px solid white;
-    border-radius:10px;
-    text-align: center;
-}
-
 sidepanel .handle {
     position: absolute;
     top: 35px;
@@ -1078,7 +1065,7 @@ sidepanel .leftpanel {
     left: 0px;
     width: 360px;
     height: calc(100% - 40px);
-    margin: 20px;
+    margin: 15px;
 }
 
 sidepanel .rightpanel {
@@ -1087,12 +1074,75 @@ sidepanel .rightpanel {
     left: 400px;
     width: 360px;
     height: calc(100% - 40px);
-    margin: 20px;
+    margin: 15px;
 }
 
 sidepanel .leftpanel .episode-img {
-    width:360px;
-    height:225px;
+    height: 195px;
+    width: 325px;
+    margin: 0 auto;
+    border: 8px solid #3a3a3a;
+    border-radius: 5px;
+    background-size: 100% 100%;
+}
+
+sidepanel .leftpanel h2 {
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    font-size: 28px;
+}
+sidepanel .leftpanel h3 {
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+sidepanel .leftpanel p {
+    margin: 10px;
+    color: rgb(128, 128, 128);
+}
+
+sidepanel .leftpanel a:hover {
+    text-decoration: none;
+}
+
+sidepanel .leftpanel .buttons {
+    list-style: none;
+    margin: 20px;
+    padding: 0;
+}
+
+sidepanel .leftpanel .buttons strong {
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+sidepanel .leftpanel .buttons li {
+    padding: 15px;
+    margin: 8px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+sidepanel .leftpanel .buttons li:hover {
+    background-color: rgba(66,66,66,0.8);
+    cursor: pointer;
+}
+
+sidepanel .leftpanel .glyphicon-eye-close, sidepanel .leftpanel .glyphicon-eye-close:hover {
+    position: inherit;
+    color: white;
+}
+
+sidepanel .leftpanel i.glyphicon, sidepanel .leftpanel .glyphicon-eye-close:before, sidepanel .leftpanel .glyphicon-eye-open:before {
+    float: left;
+    font-size: 22px;
 }
 
 @media (min-width: 1800px) {
