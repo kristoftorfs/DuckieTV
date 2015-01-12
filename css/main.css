@@ -444,6 +444,10 @@ table.light h1 {
 .dropdown-menu table.torrents tbody td:nth-last-child(-n + 2) {
     text-align: right;
 }
+.dropdown-menu .torrent-remote-control {
+    padding-left: 20px;
+}
+
 chrome-top-sites {
     position: fixed;
     top: 0px;
@@ -1095,20 +1099,23 @@ sidepanel .leftpanel .episode-img {
 sidepanel .leftpanel h2 {
     text-align: center;
     color: #fff;
-    margin-top: 15px;
+    margin-top: 13px;
+    margin-bottom: 0;
     font-size: 28px;
 }
 sidepanel .leftpanel h3 {
     text-align: center;
     color: #fff;
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-bottom: 0;
     font-size: 20px;
     letter-spacing: 0.5px;
 }
 
 sidepanel .leftpanel p {
-    margin: 10px;
+    margin: 8px;
     color: rgb(208, 208, 208);
+    font-size: 13px;
 }
 
 sidepanel .leftpanel a:hover {
@@ -1132,7 +1139,7 @@ sidepanel .leftpanel .buttons strong {
 sidepanel .leftpanel .buttons a {
     display: block;
     padding: 15px;
-    margin: 5px 15px;
+    margin: 5px 20px;
     border: 1px solid #fff;
     border-radius: 10px;
     text-align: center;
@@ -1160,6 +1167,25 @@ sidepanel .leftpanel i.glyphicon {
 }
 sidepanel .leftpanel i.glyphicon.glyphicon-eye-open {
     color: green !important;
+}
+
+sidepanel .leftpanel .buttons .torrent-remote-control > span {
+    /* Replicate of the strong tag */
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: normal;
+    color: white;
+    font-family: 'bebasregular';
+    display: block;
+    margin-bottom: 4px;
+}
+sidepanel .leftpanel .buttons .torrent-remote-control a {
+    margin: 0;
+    padding: 7px;
+}
+sidepanel .leftpanel .buttons .torrent-remote-control a i.glyphicon {
+    font-size: 18px;
+    margin-right: 2px;
 }
 
 @media (min-width: 1800px) {
