@@ -104,11 +104,13 @@ angular.module('DuckieTV.directives.torrentdialog', [])
                 q: '=q',
                 TVDB_ID: '=tvdbid'
             },
-            template: '<li class="torrent-dialog" ng-click="openDialog()" tooltip-append-to-body=true tooltip="{{tooltip}}"><a><i class="glyphicon glyphicon-download"></i><span ng-transclude></span></a></li>',
+            template: '<a class="torrent-dialog" ng-click="openDialog()" tooltip-append-to-body=true tooltip="{{getTooltip()}}"><i class="glyphicon glyphicon-download"></i><span ng-transclude></span></a>',
             controller: function($scope) {
-                $scope.tooltip = $scope.q !== undefined ?
+                $scope.getTooltip = function() {
+                    return $scope.q !== undefined ?
                     $filter('translate')('TORRENTDIALOG/search-download-this/tooltip') + $scope.q :
                     $filter('translate')('TORRENTDIALOG/search-download-any/tooltip');
+                }
                 $scope.openDialog = function() {
                     TorrentDialog.search($scope.q, $scope.TVDB_ID);
                 }
