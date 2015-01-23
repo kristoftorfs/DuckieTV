@@ -2,7 +2,7 @@
     <!-- Temp Close Sidepanel Button -->
     <div class="handle" ng-click="hide()">Hide</div>
     
-    <div class="leftpanel">
+    <div class="leftpanel" ng-class="{ episode: episode, serie: serie}">
         
         <div class="episode-img" lazy-background="{{episode.filename}}"></div>
         <h2>{{serie.name}} - {{episode.getFormattedEpisode()}}</h2>
