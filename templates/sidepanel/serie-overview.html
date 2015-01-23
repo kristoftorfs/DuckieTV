@@ -1,7 +1,11 @@
 <div class="serie-overview">
-  <div lazy-background="{{serie.poster}}" style='margin: 0px auto; width:180px; height:200px; background-size:contain; background-repeat:no-repeat;'></div>
 
-  <table>
+  <!-- Should we add the serie name considering most posters should contain the name?
+  <h1>{{serie.name}}</h1>
+  -->
+  <div class="serie-img" lazy-background="{{serie.poster}}" popover="{{serie.name}}" popover-trigger="mouseenter" popover-placement="left"></div>
+
+  <table class="metadata" width="100%" border="0" style="margin-top: 10px">
     <tbody>
       <tr>
         <th>{{'SERIEDETAILS/links/hdr'|translate}}</th>

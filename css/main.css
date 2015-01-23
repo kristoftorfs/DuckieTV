@@ -1085,6 +1085,7 @@ sidepanel .rightpanel {
     width: 400px;
     height: 100%;
     padding: 15px;
+    background-color: rgb(23, 23, 23);
 }
 
 sidepanel .leftpanel .episode .episode-img {
@@ -1186,6 +1187,19 @@ sidepanel .leftpanel .episode .buttons .torrent-remote-control a {
 sidepanel .leftpanel .episode .buttons .torrent-remote-control a i.glyphicon {
     font-size: 18px;
     margin-right: 2px;
+}
+
+sidepanel .rightpanel .serie-overview h1 {
+    margin: 0 0 5px 0;
+    text-align: center;
+    color: white;
+}
+
+sidepanel .rightpanel .serie-overview .serie-img {
+    margin: 5px auto;
+    height: 275px;
+    width: 195px;
+    background-size: 100% 100%;
 }
 
 @media (min-width: 1800px) {
