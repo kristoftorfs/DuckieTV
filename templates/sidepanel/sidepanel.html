@@ -2,63 +2,13 @@
     <!-- Temp Close Sidepanel Button -->
     <div class="handle" ng-click="hide()">Hide</div>
     
-    <div class="leftpanel" ng-class="{ episode: episode, serie: serie}">
-        
-        <div class="episode-img" lazy-background="{{episode.filename}}"></div>
-        <h2>{{serie.name}} - {{episode.getFormattedEpisode()}}</h2>
-        <h3>{{episode.episodename}}</h3>
-        <p>{{episode.overview}}</p>
-
-        <table class="buttons" width="100%" border="0">
-          <tr class="two-face">
-            <td>
-                <a ng-click="showSerie()" style="margin-right: 5px">
-                    <i class="glyphicon glyphicon-info-sign"></i><strong>{{'EVENT/dropdown-series-details/lbl'|translate}}</strong>
-                </a>
-            </td>
-            <td>
-                <a ng-click="showEpisodes()" style="margin-left: 5px">
-                    <i class="glyphicon glyphicon-info-sign"></i><strong>Episodes</strong>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <episode-watched ng-if="episode.hasAired()" template-url="templates/sidepanel/mark-watched.html" episode="episode" ng-click="markWatched(episode)"></episode-watched>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <torrent-dialog ng-if="getSetting('torrenting.enabled')" tvdbid='episode.TVDB_ID' q='getSearchString(serie, episode)'><strong><translate>EVENT/dropdown-utorrent-client/lbl</translate></strong></torrent-dialog>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <a ng-click="autoDownload(episode)">
-                    <i class="glyphicon glyphicon-cloud-download"></i><strong>Auto Download</strong>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <a class="no-hover" ng-if="getSetting('torrenting.enabled') && episode.magnetHash && isTorrentClientConnected()">
-                    <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteControl.html"></torrent-remote-control>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <a class="no-hover" ng-if="getSetting('torrenting.enabled') && getSetting('torrenting.progress') && episode.magnetHash">
-                    Download Progress
-                    <torrent-remote-control info-hash="episode.magnetHash" template-url="templates/torrentMiniRemoteProgress.html"></torrent-remote-control>
-                </a>
-            </td>
-          </tr>
-        </table>
+    <div class="leftpanel">
+      <div class="episode" ng-include="'templates/sidepanel/episode-details.html'"></div>
+      <!--<div class="serie" ng-include="'templates/sidepanel/serie-details.html'" ng-if="expression"></div> -->
     </div>
 
     <div class="rightpanel"> 
-        <serie-details ng-if="state == 'serie'" template-url="templates/sidepanel/serieDetails.html"></serie-details>
+        <serie-details ng-if="state == 'serie'" template-url="templates/sidepanel/serie-details.html"></serie-details>
         <div ng-if="state == 'episodes'" ng-include="'templates/sidepanel/episodes.html'"></div>
     </div>
 </div>

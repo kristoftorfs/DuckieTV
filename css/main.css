@@ -1087,7 +1087,7 @@ sidepanel .rightpanel {
     padding: 15px;
 }
 
-sidepanel .leftpanel.episode .episode-img {
+sidepanel .leftpanel .episode .episode-img {
     height: 195px;
     width: 325px;
     margin: 0 auto;
@@ -1096,14 +1096,14 @@ sidepanel .leftpanel.episode .episode-img {
     background-size: 100% 100%;
 }
 
-sidepanel .leftpanel.episode h2 {
+sidepanel .leftpanel .episode h2 {
     text-align: center;
     color: #fff;
     margin-top: 13px;
     margin-bottom: 0;
     font-size: 28px;
 }
-sidepanel .leftpanel.episode h3 {
+sidepanel .leftpanel .episode h3 {
     text-align: center;
     color: #fff;
     margin-top: 8px;
@@ -1112,31 +1112,31 @@ sidepanel .leftpanel.episode h3 {
     letter-spacing: 0.5px;
 }
 
-sidepanel .leftpanel.episode p {
+sidepanel .leftpanel .episode p {
     margin: 8px;
     color: rgb(208, 208, 208);
     font-size: 13px;
 }
 
-sidepanel .leftpanel.episode a:hover {
+sidepanel .leftpanel .episode a:hover {
     text-decoration: none;
 }
 
-sidepanel .leftpanel.episode .buttons {
+sidepanel .leftpanel .episode .buttons {
     list-style: none;
     margin: 0;
     padding: 0px;
     text-align: center;
 }
 
-sidepanel .leftpanel.episode .buttons strong {
+sidepanel .leftpanel .episode .buttons strong {
     font-size: 18px;
     letter-spacing: 1px;
     font-weight: normal;
     color: white;
 }
 
-sidepanel .leftpanel.episode .buttons a {
+sidepanel .leftpanel .episode .buttons a {
     display: block;
     padding: 15px;
     margin: 5px 20px;
@@ -1146,30 +1146,30 @@ sidepanel .leftpanel.episode .buttons a {
     transition: background-color 0.3s;
 }
 
-sidepanel .leftpanel.episode .buttons a:hover {
+sidepanel .leftpanel .episode .buttons a:hover {
     background-color: rgba(66,66,66,0.8);
     cursor: pointer;
 }
 
-sidepanel .leftpanel.episode .buttons a.no-hover {
+sidepanel .leftpanel .episode .buttons a.no-hover {
     background-color: initial;
     cursor: initial;
 }
 
-sidepanel .leftpanel.episode .buttons tr.two-face td {
+sidepanel .leftpanel .episode .buttons tr.two-face td {
     width: 50%;
 }
 
-sidepanel .leftpanel.episode i.glyphicon {
+sidepanel .leftpanel .episode i.glyphicon {
     float: left;
     font-size: 22px;
     color: white;
 }
-sidepanel .leftpanel.episode i.glyphicon.glyphicon-eye-open {
+sidepanel .leftpanel .episode i.glyphicon.glyphicon-eye-open {
     color: green !important;
 }
 
-sidepanel .leftpanel.episode .buttons .torrent-remote-control > span {
+sidepanel .leftpanel .episode .buttons .torrent-remote-control > span {
     /* Replicate of the strong tag */
     font-size: 18px;
     letter-spacing: 1px;
@@ -1179,11 +1179,11 @@ sidepanel .leftpanel.episode .buttons .torrent-remote-control > span {
     display: block;
     margin-bottom: 4px;
 }
-sidepanel .leftpanel.episode .buttons .torrent-remote-control a {
+sidepanel .leftpanel .episode .buttons .torrent-remote-control a {
     margin: 0;
     padding: 7px;
 }
-sidepanel .leftpanel.episode .buttons .torrent-remote-control a i.glyphicon {
+sidepanel .leftpanel .episode .buttons .torrent-remote-control a i.glyphicon {
     font-size: 18px;
     margin-right: 2px;
 }
