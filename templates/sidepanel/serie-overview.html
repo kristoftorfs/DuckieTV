@@ -1,8 +1,7 @@
 <div class="serie-overview">
+  <div style="background-image: url({{serie.poster}}); position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-size: cover; opacity: 0.2; z-index: -1; background-position: 50%;
+" ng-hide="bgtest"></div>
 
-  <!-- Should we add the serie name considering most posters should contain the name?
-  <h1>{{serie.name}}</h1>
-  -->
   <div class="serie-img" lazy-background="{{serie.poster}}" popover="{{serie.name}}" popover-trigger="mouseenter" popover-placement="left"></div>
 
   <table class="metadata" width="100%" border="0" style="margin-top: 10px">
@@ -59,11 +58,16 @@
           </ul>
         </td>
       </tr>
+    </tbody>
+  </table>
+  <table class="buttons" width="100%" border="0">
+    <tbody>
       <tr>
-        <th colspan='2' style='text-align:center'>
+        <th style='text-align:center'>
           <button class="btn btn-danger" ng-show="serie.displaycalendar == 1" ng-click="toggleSerieDisplay(serie)">{{'SERIEDETAILS/calendar-hide/btn'|translate}}</button>
           <button class="btn btn-info" ng-show="serie.displaycalendar == 0" ng-click="toggleSerieDisplay(serie)">{{'SERIEDETAILS/calendar-show/btn'|translate}}</button>
           <button class="btn btn-danger" ng-click="removeFromFavorites(serie)">{{'SERIEDETAILS/delete-serie/btn'|translate}}</button>
+          <button class="btn btn-danger" ng-click="bgtest = !bgtest">Test Toggle background overlay</button>
         </th>
       </tr>
     </tbody>

@@ -1079,13 +1079,16 @@ sidepanel .leftpanel {
 }
 
 sidepanel .rightpanel {
-    position: absolute;
+    /* Should be position:absolute, relative seems to work but only for the right panel
+    this is needed if you want the serie poster to be a background */
+    position: relative;
     top: 0px;
     left: 400px;
     width: 400px;
     height: 100%;
     padding: 15px;
     background-color: rgb(23, 23, 23);
+    z-index: 0;
 }
 
 sidepanel .leftpanel .episode .episode-img {
@@ -1200,6 +1203,10 @@ sidepanel .rightpanel .serie-overview .serie-img {
     height: 275px;
     width: 195px;
     background-size: 100% 100%;
+}
+
+sidepanel .rightpanel .serie-overview .metadata {
+    color: white;
 }
 
 @media (min-width: 1800px) {
