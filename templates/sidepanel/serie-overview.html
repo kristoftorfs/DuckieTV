@@ -1,6 +1,5 @@
 <div class="serie-overview">
-  <div style="background-image: url({{serie.poster}}); position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-size: cover; opacity: 0.2; z-index: -1; background-position: 50%;
-" ng-hide="bgtest"></div>
+  <div lazy-background="{{serie.poster}}" class="serie-bg-img" ng-hide="bgtest"></div>
 
   <div class="serie-img" lazy-background="{{serie.poster}}" popover="{{serie.name}}" popover-trigger="mouseenter" popover-placement="left"></div>
 
